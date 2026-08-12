@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-paper: #F3F0E8;
+    --bg-paper-dark: #EAE5D9;
+    --text-charcoal: #242424;
+    --text-muted: #5E5B52;
+    --accent-green: #82A775;
+    --accent-green-dark: #678B5B;
+    --accent-green-light: #E4EEDC;
+    --accent-amber: #D97706;
+    --paper-border: #DCD6C8;
+    --charcoal-bg: #242424;
+    --charcoal-card: #2D2D2D;
+  }
+
+  body {
+    background-color: var(--bg-paper);
+    color: var(--text-charcoal);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Paper grain overlay using CSS SVG data URI */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background-color: #82A775;
+    color: #ffffff;
+  }
+}
+
+/* Custom Font Utilities */
+.font-display {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-editorial {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-handwriting {
+  font-family: 'Caveat', 'Kalam', cursive;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Scrapbook Visual Elements */
+.paper-card {
+  background-color: #FAF8F5;
+  border: 1px solid var(--paper-border);
+  box-shadow: 2px 4px 12px rgba(36, 36, 36, 0.06), 0px 1px 3px rgba(36, 36, 36, 0.04);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.paper-card:hover {
+  box-shadow: 4px 8px 20px rgba(36, 36, 36, 0.1);
+}
+
+.paper-card-dark {
+  background-color: #2A2A2A;
+  color: #F3F0E8;
+  border: 1px solid #3D3D3D;
+  box-shadow: 2px 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Masking Tape Strips */
+.tape-strip {
+  position: absolute;
+  height: 26px;
+  background-color: rgba(238, 232, 218, 0.85);
+  border: 1px solid rgba(210, 200, 180, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(1px);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.tape-strip::before, .tape-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: transparent;
+}
+
+.tape-left {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 3px 80%, 0% 60%, 4px 40%, 0% 20%);
+}
+
+.tape-right {
+  clip-path: polygon(0% 0%, 100% 0%, 96% 20%, 100% 40%, 97% 60%, 100% 80%, 96% 100%, 0% 100%);
+}
+
+.tape-both {
+  clip-path: polygon(3px 0%, 97% 0%, 100% 20%, 96% 40%, 100% 60%, 97% 80%, 100% 100%, 0% 100%, 3px 80%, 0% 60%, 4px 40%, 0% 20%);
+}
+
+/* Rotations */
+.rotate-n3 { transform: rotate(-3deg); }
+.rotate-n2 { transform: rotate(-2deg); }
+.rotate-n1 { transform: rotate(-1deg); }
+.rotate-p1 { transform: rotate(1deg); }
+.rotate-p2 { transform: rotate(2deg); }
+.rotate-p3 { transform: rotate(3deg); }
+
+/* Torn Paper Dividers */
+.torn-divider-top {
+  clip-path: polygon(
+    0% 24px, 2% 8px, 5% 20px, 8% 4px, 12% 22px, 16% 6px, 20% 26px,
+    25% 10px, 30% 28px, 35% 8px, 40% 24px, 45% 6px, 50% 26px,
+    55% 10px, 60% 28px, 65% 8px, 70% 22px, 75% 6px, 80% 24px,
+    85% 8px, 90% 26px, 95% 10px, 100% 24px, 100% 100%, 0% 100%
+  );
+}
+
+.torn-divider-bottom {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% calc(100% - 24px),
+    95% calc(100% - 8px), 90% calc(100% - 26px), 85% calc(100% - 10px),
+    80% calc(100% - 24px), 75% calc(100% - 6px), 70% calc(100% - 22px),
+    65% calc(100% - 8px), 60% calc(100% - 28px), 55% calc(100% - 10px),
+    50% calc(100% - 26px), 45% calc(100% - 6px), 40% calc(100% - 24px),
+    35% calc(100% - 8px), 30% calc(100% - 28px), 25% calc(100% - 10px),
+    20% calc(100% - 26px), 16% calc(100% - 6px), 12% calc(100% - 22px),
+    8% calc(100% - 4px), 5% calc(100% - 20px), 2% calc(100% - 8px), 0% calc(100% - 24px)
+  );
+}
+
+/* Rubber Stamp Tag */
+.stamp-tag {
+  border: 2px dashed var(--accent-green);
+  color: var(--text-charcoal);
+  padding: 4px 12px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  background-color: rgba(130, 167, 117, 0.08);
+}
+
+/* Notebook Grid Background */
+.notebook-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(36, 36, 36, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(36, 36, 36, 0.05) 1px, transparent 1px);
+}
+
+.notebook-lines {
+  background-size: 100% 28px;
+  background-image: linear-gradient(to bottom, transparent 27px, rgba(130, 167, 117, 0.25) 28px);
+}
+
+/* Blueprint Grid Background */
+.blueprint-grid {
+  background-color: #1E293B;
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+}
+
+/* Newspaper Layout Columns */
+.newspaper-bg {
+  background-color: #F8F6EF;
+  border: 1px solid #E2DCCE;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F3F0E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8C2B4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #82A775;
+}
+
+/* Focus Accessibility */
+:focus-visible {
+  outline: 2px solid #82A775;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
