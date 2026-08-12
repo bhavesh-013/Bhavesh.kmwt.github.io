@@ -51,8 +51,8 @@ export const PERSONAL_INFO = {
   email: "bhavesh.kmwt.tech@gmail.com",
   phone: "+91 8441856457",
   location: "Rajsamand, Rajasthan, India",
-  linkedin: "https://linkedin.com/in/bhavesh-kumawat",
-  github: "https://github.com/bhavesh-kumawat",
+  linkedin: "https://www.linkedin.com/in/bhavesh-kumawat-13b191376/",
+  github: "https://github.com/bhavesh-013",
   aboutBio: "Computer Science undergraduate with knowledge of full-stack development, object-oriented programming, and databases. Enthusiastic about learning new technologies and building real-world software solutions.",
   aboutPoints: [
     "Computer Science student @ PW Institute of Innovation",
@@ -74,7 +74,7 @@ export const EDUCATION_DATA: EducationItem[] = [
     period: "2025 — 2029 (Expected)",
     degree: "B.Tech in Computer Science",
     institution: "PW Institute of Innovation",
-    score: "Sem 1 — SGPA: 7.9",
+    score: "Sem 3",
     details: "Focusing on Full-Stack Development, Data Structures, Algorithms, and Object Oriented Programming.",
     tag: "CURRENT DEGREE"
   },
@@ -82,7 +82,6 @@ export const EDUCATION_DATA: EducationItem[] = [
     period: "2023 — 2024",
     degree: "12th (Senior Secondary)",
     institution: "Gayatri Public Sr. Sec. School (RBSE)",
-    score: "89.80%",
     details: "Science Stream — Physics, Chemistry & Mathematics foundation.",
     tag: "HIGHER SECONDARY"
   },
@@ -90,7 +89,6 @@ export const EDUCATION_DATA: EducationItem[] = [
     period: "2021 — 2022",
     degree: "10th (Secondary)",
     institution: "Gayatri Public Sr. Sec. School (RBSE)",
-    score: "81.50%",
     details: "General Academics & Mathematics.",
     tag: "SECONDARY"
   }
@@ -180,30 +178,8 @@ export const PROJECTS_DATA: Project[] = [
       "~35% faster load time through smart caching",
       "Resilient Multi-Proxy Fallback Pipeline"
     ],
-    codeSnippets: [
-      {
-        label: "Multi-Proxy Fallback Fetcher",
-        lang: "js",
-        code: `async function fetchWithFallback(url) {
-  const proxies = [
-    'https://api.allorigins.win/raw?url=',
-    'https://corsproxy.io/?',
-    'https://thingproxy.freeboard.io/fetch/'
-  ];
-  for (const proxy of proxies) {
-    try {
-      const res = await fetch(proxy + encodeURIComponent(url));
-      if (res.ok) return await res.json();
-    } catch (e) {
-      console.warn("Proxy attempt failed, rotating...");
-    }
-  }
-  throw new Error("All endpoints exhausted");
-}`
-      }
-    ],
-    liveUrl: "https://netlify.app",
-    githubUrl: "https://github.com/bhavesh-kumawat"
+    liveUrl: "https://insight-bharat.netlify.app/",
+    githubUrl: "https://github.com/bhavesh-013/insight-bharat-news"
   },
   {
     id: "securra",
@@ -234,25 +210,9 @@ export const PROJECTS_DATA: Project[] = [
       "Persistent State Engine (saveState / loadState)",
       "Dynamic Reactive Status Panels"
     ],
-    codeSnippets: [
-      {
-        label: "Modular State Persistence Engine",
-        lang: "js",
-        code: `const StateManager = {
-  key: 'securra_home_state',
-  saveState(state) {
-    localStorage.setItem(this.key, JSON.stringify(state));
-    this.notifySubscribers(state);
-  },
-  loadState() {
-    const raw = localStorage.getItem(this.key);
-    return raw ? JSON.parse(raw) : this.defaultState();
-  }
-};`
-      }
-    ],
-    liveUrl: "https://netlify.app",
-    githubUrl: "https://github.com/bhavesh-kumawat"
+
+    liveUrl: "http://securra-digitalboard.netlify.app",
+    githubUrl: "https://github.com/bhavesh-013/home-dash"
   },
   {
     id: "grocery-dbms",
@@ -281,22 +241,7 @@ export const PROJECTS_DATA: Project[] = [
     highlights: [
       "10+ Tables, 134+ Records",
       "Chen Notation ER Blueprint"
-    ],
-    codeSnippets: [
-      {
-        label: "Inventory Auto-Decrement Trigger",
-        lang: "sql",
-        code: `CREATE TRIGGER trg_after_sale_insert
-AFTER INSERT ON transaction_items
-FOR EACH ROW
-BEGIN
-  UPDATE inventory
-  SET stock_qty = stock_qty - NEW.quantity
-  WHERE product_id = NEW.product_id;
-END;`
-      }
-    ],
-    githubUrl: "https://github.com/bhavesh-kumawat"
+    ]
   }
 ];
 
