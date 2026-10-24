@@ -74,7 +74,7 @@ export const EDUCATION_DATA: EducationItem[] = [
     period: "2025 — 2029 (Expected)",
     degree: "B.Tech in Computer Science",
     institution: "PW Institute of Innovation",
-    score: "Sem 3",
+    score: "8.5 CGPA",
     details: "Focusing on Full-Stack Development, Data Structures, Algorithms, and Object Oriented Programming.",
     tag: "CURRENT DEGREE"
   },
